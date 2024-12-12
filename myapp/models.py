@@ -7,7 +7,7 @@ class Role(models.Model):
 
 class Users(models.Model):
     id = models.AutoField(primary_key=True)
-    role = models.ForeignKey(Role, on_delete=models.CASCADE)
+    role = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     email = models.EmailField(unique=True, max_length=255)
     device = models.CharField(max_length=255, blank=True, null=True)
@@ -19,8 +19,6 @@ class Users(models.Model):
 class Courses(models.Model):
     id = models.AutoField(primary_key=True)
     course_name = models.CharField(max_length=255)
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
     objects = models.Manager()
 
 class QrCode(models.Model):
@@ -32,8 +30,9 @@ class QrCode(models.Model):
 
 class Scan(models.Model):
     id = models.AutoField(primary_key=True)
-    qr_code = models.ForeignKey(QrCode, on_delete=models.CASCADE)
-    user = models.ForeignKey(Users, on_delete=models.CASCADE)
+    #qr_code = models.ForeignKey(QrCode, on_delete=models.CASCADE)
+    #user = models.ForeignKey(Users, on_delete=models.CASCADE)
+    scan = models.BooleanField(default=False)
     scan_time = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
 
