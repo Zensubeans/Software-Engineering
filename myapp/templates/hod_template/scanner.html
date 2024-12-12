@@ -3,6 +3,7 @@
 Scan
 {% endblock page_title %}
 {% block main_content %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,8 @@ Scan
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Scanner</title>
     <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
 <body>
     <div id="your-qr-result"></div>
@@ -36,9 +39,8 @@ Scan
                     ++countResults;
                     lastResult = decodeText;
 
-                    alert("Your qr is : " + decodeText,decodeResult)
-
-                    myqr.innerHTML = `you scan ${countResults} : ${decodeText}`
+                    myqr.innerHTML = `PRESENT`
+                    htmlscanner.clear();
                 }
             }
             var htmlscanner = new Html5QrcodeScanner(
@@ -47,6 +49,11 @@ Scan
                 htmlscanner.render(onScanSuccess)
         })
     </script>
+
 </body>
 </html>
 {% endblock main_content %}
+
+
+
+

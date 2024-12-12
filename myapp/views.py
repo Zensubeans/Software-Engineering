@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
 
+
 def showDemoPage(request):
     return render(request, "demo.html")
 
